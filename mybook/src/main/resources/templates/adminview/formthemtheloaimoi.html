@@ -1,0 +1,49 @@
+ <div xmlns:th="http://www.thymeLeaf.org" class="container-fluid pt-4 px-4">
+                <div style="padding:50px" class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">
+                        <script type="text/javascript">
+function confirmSubmit(){
+	var result= confirm("Bạn Chắc Chắn Muốn Thêm Thể Loại");
+	if(result){
+		return true;
+	}else{
+		return false;
+	}
+	
+}
+</script>
+                        <div class="bg-secondary rounded h-100 p-4">
+                            <h6 class="mb-4">Thêm Thể Loại Mới</h6>
+                               <form onsubmit="confirmSubmit()" th:action="@{'/admin/themtheloaimoi/'+${ano}}" th:object="${newtheloai}" th:switch="${ano}"method="post" enctype="multipart/form-data">
+                             <div class="form-floating mb-3" th:case="'update'">
+                                <input type="text" class="form-control" th:field="*{id}" id="floatingInput"
+                                    placeholder="Nhập Tên Thể Loại" readonly="readonly"/>
+                                <label for="floatingInput">ID</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" th:field="*{tentheloai}" id="floatingInput"
+                                    placeholder="Nhập Tên Thể Loại" required="required"/>
+                                <label for="floatingInput">Tên Thể Loại</label>
+                            </div>
+                          
+                           
+                            <div class="form-floating">
+                                <textarea class="form-control" placeholder="Leave a comment here"
+                                    id="floatingTextarea" required="required" th:field="*{mota}" style="height: 150px;"></textarea>
+                                <label for="floatingTextarea">Mô Tả</label>
+                            </div>
+                            <div class="mb-3">
+                                <label for="formFile"  class="form-label">Thêm ảnh bìa cho thể loại</label>
+                                <input  class="form-control bg-dark" id="image" accept="image/png, image/jpeg"  name="image" type="file" required="required">
+                            </div>
+                             <div class="mb-3">
+                             <input class="btn btn-primary w-100" type="submit" value="Hoàn Tất" id="formFile">
+                         </div>
+                         <div class="mb-3">
+                              <a th:href="@{/admin/theloaisach}" class="btn btn-outline-primary w-100" type="button">Hủy</a>
+                            </div>
+                           
+                             </form>
+                        </div>
+                  
+                </div>
+            </div>

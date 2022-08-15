@@ -1,0 +1,87 @@
+
+<div xmlns:th="http://www.thymeLeaf.org"
+	class="container-fluid pt-4 px-4">
+	<div style="padding: 50px"
+		class="row  bg-secondary rounded align-items-center justify-content-center mx-0">
+        <script type="text/javascript">
+function confirmSubmit(){
+	var result= confirm("Bạn Chắc Chắn Muốn Thêm Truyện");
+	if(result){
+		return true;
+	}else{
+		return false;
+	}
+	
+}
+</script>
+		<h6 class="mb-4" style="text-align: center;">Thêm Truyện Mới</h6>
+		<form th:switch="${ano}" onsubmit="confirmSubmit()" name="formthemtruyen" th:action="@{/admin/themsachmoi/add}"
+			th:object="${newsach}" method="post" enctype="multipart/form-data">
+			<div th:case="'update'" class="form-floating mb-3">
+				<input type="text" class="form-control" id="floatingInput"
+					placeholder="Nhập Tên Sách" th:field="*{id}" readonly="readonly"> <label for="floatingInput">
+					ID</label>
+			</div>
+			<div class="form-floating mb-3">
+				<input type="text" class="form-control" id="floatingInput"
+					placeholder="Nhập Tên Sách" th:field="*{tensach}"> <label for="floatingInput">Tên
+					Sách</label>
+			</div>
+			<div class="form-floating mb-3">
+				<select class="form-select" th:field="*{tacgia}" id="floatingSelect"
+					aria-label="Floating label select example">
+					<option th:value="1" selected>Tác giả</option>
+					<option th:each="tacgia:${dstacgia}" th:value="${tacgia.id}"
+						th:utext="${tacgia.tentacgia}"></option>
+
+				</select> <label for="floatingSelect">Tác Giả</label> <a type="button"
+					th:href="@{/admin/themtacgiamoi}"
+					class="btn btn-outline-success m-2">Thêm Tác Giả Mới</a>
+			</div>
+			<div class="form-floating mb-3">
+				<select class="form-select" th:field="*{theloai}" id="floatingSelect"
+					aria-label="Floating label select example">
+					<option th:value="1" selected>Chọn Thể Loại</option>
+					<option th:each="theloai:${dstheloai}" th:value="${theloai.id}"
+						th:utext="${theloai.tentheloai}"></option>
+
+				</select> <label for="floatingSelect">Thể Loại</label> <a type="button"
+					th:href="@{/admin/themtheloaimoi}"
+					class="btn btn-outline-success m-2">Thêm Thể Loại Mới</a>
+			</div>
+			<div class="form-floating mb-3">
+				<input type="text" class="form-control" id="floatingInput" th:field="*{nxb}"
+					placeholder="Nhập Tên Nhà Xuất Bản"> <label for="floatingInput">Nhà
+					Xuất Bản:</label>
+			</div>
+			<div class="form-floating mb-3">
+				<input type="number" class="form-control" th:field="*{gia}" id="floatingInput"
+					placeholder="Nhập Tên Sách"> <label for="floatingInput">Giá:</label>
+			</div>
+			<div class="form-floating mb-3">
+				<input type="number" class="form-control" th:field="*{soluong}" id="floatingInput"
+					placeholder="Nhập Tên Sách"> <label for="floatingInput">Số
+					Lượng:</label>
+			</div>
+			<div class="form-floating">
+				<textarea class="form-control" th:field="*{noidung}" placeholder="Leave a comment here"
+					id="floatingTextarea" style="height: 150px;"></textarea>
+				<label for="floatingTextarea">Giới thiệu, Tóm Tắt:</label>
+			</div>
+			<div class="mb-3">
+				<label for="formFile" class="form-label">Thêm Ảnh Mô tả</label> <input
+					class="form-control bg-dark" name="image" id="image"
+					required="required" type="file">
+			</div>
+			<div class="mb-3">
+                             <input class="btn btn-primary w-100" type="submit"  value="Hoàn tất" id="formFile">
+                         </div>
+			<div class="mb-3">
+				<a th:href="@{/admin/danhsachsanpham}"
+					class="btn btn-outline-primary w-100" type="button">Hủy</a>
+			</div>
+		</form>
+
+
+	</div>
+</div>

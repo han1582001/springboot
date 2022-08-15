@@ -1,0 +1,52 @@
+<div  xmlns:th="http://www.thymeLeaf.org" th:switch="${anotheloai}" class="container-fluid bg-secondary mb-5">
+
+<th:block th:case="'ele'" th:include="/client/headertheloai"></th:block>
+        <div th:case="'all'" class="d-flex flex-column align-items-center justify-content-center" style="min-height: 350px">
+            <h1 class="font-weight-semi-bold text-uppercase mb-3">Our Shop</h1>
+            <div class="d-inline-flex">
+                <p class="m-0"><a th:href="@{/}">Home</a></p>
+                <p class="m-0 px-2">-</p>
+                <p class="m-0">Shop</p>
+            </div>
+        </div>
+        <div th:case="'det'" class="d-flex flex-column align-items-center justify-content-center" style="min-height: 350px">
+            <h1 class="font-weight-semi-bold text-uppercase mb-3">Thông Tin Sách</h1>
+            <div class="d-inline-flex">
+                <p class="m-0"><a th:href="@{/}">Home</a></p>
+                <p class="m-0 px-2">-</p>
+                <p class="m-0">Thông Tin Sách</p>
+            </div>
+        </div>
+         <div th:case="'cart'" class="d-flex flex-column align-items-center justify-content-center" style="min-height: 350px">
+            <h1 class="font-weight-semi-bold text-uppercase mb-3">Giỏ Hàng</h1>
+            <div class="d-inline-flex">
+                <p class="m-0"><a th:href="@{/}">Home</a></p>
+                <p class="m-0 px-2">-</p>
+                <p class="m-0">Giỏ Hàng</p>
+            </div>
+        </div>
+         <div th:case="'pro'" class="d-flex flex-column align-items-center justify-content-center" style="min-height: 350px">
+            <h1 class="font-weight-semi-bold text-uppercase mb-3">Thông Tin Tài Khoản</h1>
+            <div class="d-inline-flex">
+                <p class="m-0"><a th:href="@{/}">Home</a></p>
+                <p class="m-0 px-2">-</p>
+                <p class="m-0">Thông Tin Tài Khoản</p>
+            </div>
+        </div>
+          <div th:case="'tac'" class="d-flex flex-column align-items-center justify-content-center" style="min-height: 350px">
+            <h1 class="font-weight-semi-bold text-uppercase mb-3">Thông Tin Tác Giả</h1>
+            <div class="d-inline-flex">
+                <p class="m-0"><a th:href="@{/}">Home</a></p>
+                <p class="m-0 px-2">-</p>
+                <p class="m-0">Thông Tin Tác Giả</p>
+            </div>
+        </div>
+        <div th:case="'phanhoi'" class="d-flex flex-column align-items-center justify-content-center" style="min-height: 350px">
+            <h1 class="font-weight-semi-bold text-uppercase mb-3">Liên Hệ Shop</h1>
+            <div class="d-inline-flex">
+                <p class="m-0"><a th:href="@{/}">Home</a></p>
+                <p class="m-0 px-2">-</p>
+                <p class="m-0">Liên Hệ Shop</p>
+            </div>
+        </div>
+    </div>

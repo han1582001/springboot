@@ -1,0 +1,55 @@
+ <!-- Recent Sales Start -->
+            <div xmlns:th="http://www.thymeLeaf.org" class="container-fluid pt-4 px-4">
+                <div class="bg-secondary text-center rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">Danh Sách Đơn Hàng</h6>
+                        
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                            <thead>
+                                <tr class="text-white">
+                                   
+                                    <th scope="col" style="width:50px; text-align: center;">ID</th>
+                                    <th scope="col" style="width:200px;">Người Mua Hàng</th>
+                                    <th scope="col" style="width:150px;">Giá Trị Đơn Hàng</th>
+                                    <th scope="col" style="width:200px;">Ngày Đặt Hàng</th>
+                                    <th scope="col" style="width:200px;">Trạng Thái</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="donhang:${listdonhang}">
+                                   
+                                    <td style=" text-align: center;" th:utext="${donhang.id}"></td>
+                                    <td th:utext="${donhang.tenkhachhang}"></td>
+                                    <td th:utext="${donhang.thanhtien}+' vnd'"></td>
+                                    <td th:utext="${donhang.timedathang}"></td>
+                                    <td th:switch="${donhang.trangthai}" style="text-align: center;">
+                                     
+                                   
+                                    <h6 th:case="0" th:utext="'Chưa Nhận Hàng'"></h6>
+                                   <div th:case="1" style="color: green;" >
+                                   <h6 style="color: green;">Đã Nhận Hàng</h6>
+                                   <p style="color: white;" th:utext="${donhang.timenhanhang}"></p>
+                                   </div>
+                                   
+                             
+                                    </td>
+                                    
+                                    <td style="display: flex; flex-wrap: wrap; justify-content: center;"th:switch="${donhang.trangthai}">
+                                    <a th:href="@{'/admin/danhsachdonhang/giaohang?id='+${donhang.id}+'&trangthai=1'}" th:case="0"  class="btn btn-outline-info m-2" >Giao Hàng</a>
+                                    <a th:href="@{'/admin/danhsachdonhang/giaohang?id='+${donhang.id}+'&trangthai=0'}" th:case="1" type="button" class="btn btn-warning rounded-pill m-2">Hoàn Tác</a>
+                                    <a th:href="@{'/admin/danhsachdonhang/chitietdonhang?id='+${donhang.id}	}" type="button" class="btn btn-success rounded-pill m-2">Chi Tiết</a>
+                                  
+                                    <a th:case="1" class="btn btn-sm btn-primary" href="">Xóa</a></td>
+                                </tr>
+                                
+                               
+                               
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- Recent Sales End -->

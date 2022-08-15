@@ -1,0 +1,79 @@
+<div xmlns:th="http://www.thymeLeaf.org" class="container-fluid pt-5">
+
+	<form th:action="@{/mybook/dathang}" method="post" th:object="${cart}">
+		<div class="row px-xl-5">
+			<div class="col-lg-8 table-responsive mb-5">
+
+				<table class="table table-bordered text-center mb-0">
+					<thead class="bg-secondary text-dark">
+						<tr>
+							<th style="background-color: green;" colspan="2">Sách</th>
+							<th style="width:100px;">Giá</th>
+							<th style="width:100px;">Số Lượng</th>
+							<th style="width:100px;">Thành Tiền</th>
+							<th>Xóa</th>
+						</tr>
+					</thead>
+					<tbody class="align-middle">
+						<tr th:each="item, itemx:*{donhanglist}">
+							<td class="align-middle"style="width:100px;" ><img th:src="@{'/images/sach/'+${item.idsanpham}+'/'+${item.anh}}" alt=""
+								style="width: 50px;"> <input type="hidden"
+								th:field="*{donhanglist[__${itemx.index}__].id}"> <input
+								type="hidden"
+								th:field="*{donhanglist[__${itemx.index}__].idsanpham}"> <input
+								type="hidden" th:field="*{donhanglist[__${itemx.index}__].sanpham}">
+								<input
+								type="hidden" th:field="*{donhanglist[__${itemx.index}__].anh}"></td>
+								<td class="align-middle" th:utext="${item.sanpham}"></td>
+							<td class="giax align-middle"><input type="text"
+								class="gia form-control form-control-sm bg-secondary text-center"
+								th:field="*{donhanglist[__${itemx.index}__].gia}"
+								readonly="readonly"
+								></td>
+							<td class=" soluongx align-middle">
+								<div class="input-group quantity mx-auto" style="width: 100px;">
+									<div class="input-group-btn">
+										<button type="button" class="btn btn-sm btn-primary btn-minus">
+											<i class="fa fa-minus"></i>
+										</button>
+									</div>
+									<input type="text"
+										class="form-control form-control-sm bg-secondary text-center"
+										th:field="*{donhanglist[__${itemx.index}__].soluong}">
+									<div class="input-group-btn">
+										<button type="button" class="btn btn-sm btn-primary btn-plus">
+											<i class="fa fa-plus"></i>
+										</button>
+									</div>
+								</div>
+							</td>
+							<td class="totalx align-middle"><input readonly="readonly" type="text"
+								class="total form-control form-control-sm bg-secondary text-center"
+								th:value="${item.gia*item.soluong}"></td>
+							<td class="align-middle"><button
+									class="btn btn-sm btn-primary">
+									<i class="fa fa-times"></i>
+								</button></td>
+						</tr>
+
+					</tbody>
+				</table>
+
+
+			</div>
+			<div class="container col-lg-4">
+
+			
+
+				<div class="card border-secondary mb-5">
+				
+					
+					<div class="card-footer border-secondary bg-transparent">
+						
+						<input type="submit" value="Đặt Hàng" class="btn btn-block btn-primary my-3 py-3">
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>

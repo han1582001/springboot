@@ -1,0 +1,122 @@
+<html xmlns:th="http://www.thymeLeaf.org">
+<head>
+<meta charset="utf-8">
+<title>EShopper - Bootstrap Shop Template</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="Free HTML Templates" name="keywords">
+<meta content="Free HTML Templates" name="description">
+
+<!-- Favicon -->
+<link href="img/favicon.ico" rel="icon">
+
+<!-- Google Web Fonts -->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link
+	href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+	rel="stylesheet">
+
+<!-- Font Awesome -->
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+	rel="stylesheet">
+
+<!-- Libraries Stylesheet -->
+<link th:href="@{/clientx/lib/owlcarousel/assets/owl.carousel.min.css}"
+	rel="stylesheet">
+
+<!-- Customized Bootstrap Stylesheet -->
+<link th:href="@{/clientx/css/style.css}" rel="stylesheet">
+</head>
+
+<body>
+
+<div style="display: flex; justify-content: center;" class="container-fluid pt-5">
+
+	<form th:action="@{/mybook/dathang/confirm}" method="post" th:object="${cart}">
+		<div  style="display: flex; justify-content: center; flex-wrap: wrap;" class="row px-xl-5">
+			<div th:switch="${cartano}" style="width:100%;" class="row px-xl-5 table-responsive mb-5">
+<h4 th:case="'dathang'" style="width:100%; text-align: center;" class="font-weight-semi-bold m-0">Xác Nhận Mua Hàng</h4>
+<h4 th:case="'xemchitiet'" style="width:100%; text-align: center;" class="font-weight-semi-bold m-0">Chi Tiết Đơn Hàng</h4>
+				<table style="width:100%;" class="table table-bordered text-center mb-0">
+					<thead class="bg-secondary text-dark">
+						<tr>
+							<th  colspan="2">Sách</th>
+							<th style="width:100px;">Giá</th>
+							<th style="width:100px;">Số Lượng</th>
+							<th style="width:100px;">Thành Tiền</th>
+							
+						</tr>
+					</thead>
+					<tbody class="align-middle">
+						<tr th:each="item, itemx:*{donhanglist}">
+							<td class="align-middle"style="width:100px;" ><img th:src="@{'/images/sach/'+${item.idsanpham}+'/'+${item.anh}}" alt=""
+								style="width: 50px;"> <input type="hidden"
+								th:field="*{donhanglist[__${itemx.index}__].id}"> <input
+								type="hidden"
+								th:field="*{donhanglist[__${itemx.index}__].idsanpham}"> <input
+								type="hidden" th:field="*{donhanglist[__${itemx.index}__].sanpham}">
+								<input
+								type="hidden" th:field="*{donhanglist[__${itemx.index}__].anh}">
+								
+								<input type="hidden"
+								class="gia form-control form-control-sm bg-secondary text-center"
+								th:field="*{donhanglist[__${itemx.index}__].gia}"
+								
+								>
+								<input type="hidden"
+										class="form-control form-control-sm bg-secondary text-center"
+										th:field="*{donhanglist[__${itemx.index}__].soluong}">
+									
+								</td>
+								<td class="align-middle" th:utext="${item.sanpham}"></td>
+							<td class="giax align-middle" th:utext="${item.gia}"></td>
+							<td class=" soluongx align-middle" th:utext="${item.soluong}">
+								<div class="input-group quantity mx-auto" style="width: 100px;">
+									
+									
+								</div>
+							</td>
+							<td class="totalx align-middle" th:utext="${item.gia*item.soluong}"></td>
+							
+						</tr>
+
+					</tbody>
+				</table>
+
+
+			</div>
+		
+
+			
+
+				<div style="width:100%;" class="row px-xl-5 card border-secondary mb-5">
+					<div class="card-header bg-secondary border-0">
+						<h4 class="font-weight-semi-bold m-0">Cart Summary</h4>
+					</div>
+					
+					<div th:switch="${cartano}" class="card-footer border-secondary bg-transparent">
+						<div class="d-flex justify-content-between mt-2">
+							<h5 class="font-weight-bold">Tổng Tiền</h5>
+							<h5 class="tong font-weight-bold" th:utext="${total}"></h5>
+						</div>
+						<input th:case="'dathang'" type="submit" value="Xác Nhận Đặt Hàng" class="btn btn-block btn-primary my-3 py-3">
+					</div>
+				</div>
+			</div>
+		
+	</form>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+	<script th:src="@{/clientx/lib/easing/easing.min.js}"></script>
+	<script th:src="@{/clientx/lib/owlcarousel/owl.carousel.min.js}"></script>
+
+	<!-- Contact Javascript File -->
+	<script th:src="@{/clientx/mail/jqBootstrapValidation.min.js}"></script>
+	<script th:src="@{/clientx/mail/contact.js}"></script>
+
+	<!-- Template Javascript -->
+	<script th:src="@{/clientx/js/main.js}"></script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+
+<!-- Shop Start -->
+<div xmlns:th="http://www.thymeLeaf.org" class="container-fluid pt-5">
+	<div class="row px-xl-5">
+		<!-- Shop Sidebar Start -->
+		<div class="col-lg-3 col-md-12">
+			<!-- Price Start -->
+
+			<!-- Price End -->
+
+			<!-- Color Start -->
+
+			<!-- Color End -->
+
+			<!-- Size Start -->
+
+			<!-- Size End -->
+		</div>
+		<!-- Shop Sidebar End -->
+
+
+		<!-- Shop Product Start -->
+		<div class="col-lg-9 col-md-12" th:switch="${listnull}">
+			<div class="row pb-3">
+				<div class="col-12 pb-1">
+					<div class="d-flex align-items-center justify-content-between mb-4">
+						<form th:action="@{/mybook/book}" method="get">
+							<div class="input-group">
+								<input type="text" id="search" name="search" class="form-control"
+									placeholder="Search by name">
+								<div class="input-group-append">
+									<span class="input-group-text bg-transparent text-primary">
+										<i class="fa fa-search"></i>
+									</span>
+								</div>
+							</div>
+						</form>
+						<div class="dropdown ml-4">
+							<button class="btn border dropdown-toggle" type="button"
+								id="triggerId" data-toggle="dropdown" aria-haspopup="true"
+								aria-expanded="false">Sắp Xếp</button>
+							<div class="dropdown-menu dropdown-menu-right"
+								aria-labelledby="triggerId">
+								<a class="dropdown-item" th:href="@{'/mybook/book?search='+${searchkey}+'&theloai='+${idtheloai}+'&sort=thoigiandang&thutu=giam'}">Mới Nhất</a> <a
+									class="dropdown-item" th:href="@{'/mybook/book?search='+${searchkey}+'&theloai='+${idtheloai}+'&sort=thoigiandang&thutu=tang'}">Cũ Nhất</a> <a
+									class="dropdown-item" th:href="@{'/mybook/book?search='+${searchkey}+'&theloai='+${idtheloai}+'&sort=tensach&thutu=tang'}">Theo Bảng chữ cái (A-Z)</a> <a
+									class="dropdown-item" th:href="@{'/mybook/book?search='+${searchkey}+'&theloai='+${idtheloai}+'&sort=tensach&thutu=giam'}">Theo Bảng chữ cái (Z-A)</a>
+									<a
+									class="dropdown-item" th:href="@{'/mybook/book?search='+${searchkey}+'&theloai='+${idtheloai}+'&sort=gia&thutu=tang'}">Giá(tăng dần)</a>
+									<a
+									class="dropdown-item" th:href="@{'/mybook/book?search='+${searchkey}+'&theloai='+${idtheloai}+'&sort=gia&thutu=giam'}">Giá(giảm dần)</a>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div  th:each="sach:${listsach}"
+					class="col-lg-4 col-md-6 col-sm-12 pb-1">
+					<div class="card product-item border-0 mb-4">
+						<div
+							class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+							<img style="width: 120px; height: 370px" class="img-fluid w-100"
+								th:src="@{'/images/sach/'+${sach.id}+'/'+${sach.anh}}" alt="">
+						</div>
+						<div
+							class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+							<h6 class="text-truncate mb-3" th:utext="${sach.tensach}"></h6>
+							<div class="d-flex justify-content-center">
+								<h6 class="text-muted ml-2" th:utext="${sach.gia}"></h6>
+							</div>
+						</div>
+						<div
+							class="card-footer d-flex justify-content-between bg-light border">
+							<a th:href="@{'/mybook/chitietsach?id='+${sach.id}}" class="btn btn-sm text-dark p-0"><i
+								class="fas fa-eye text-primary mr-1"></i>Xem Chi Tiết</a> <a th:href="@{'/mybook/giohang/'+${sach.id}}"
+								class="btn btn-sm text-dark p-0"><i
+								class="fas fa-shopping-cart text-primary mr-1"></i>Thêm Vào Giỏ
+								Hàng</a>
+						</div>
+					</div>
+					
+				</div>
+
+<h3 th:case="'null'">Không tìm thấy sách phù hợp</h3>
+
+				<style>
+a.disa {
+	pointer-events: none;
+	cursor: default;
+}
+</style>
+
+				<div class="col-12 pb-1">
+					<nav aria-label="Page navigation">
+						<ul class="pagination justify-content-center mb-3">
+							<li th:class="${currentPage==0}?'page-item':'page-item active'"><a
+								th:class="${currentPage==0}?'page-link disa':'page-link'"
+								th:href="@{'/mybook/book/'+${currentPage-1}+'?search='+${searchkey}+'&theloai='+${idtheloai}+'&sort='+${sort}+'&thutu='+${thutu}}"
+								aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+									<span class="sr-only">Previous</span>
+							</a></li>
+							<li th:each="page:${pageList}"
+								th:class="${currentPage==page-1}?'page-item active':'page-item'"><a
+								th:class="${currentPage==page-1}?'page-link disa':'page-link'"
+								th:href="@{'/mybook/book/'+${page-1}+'?search='+${searchkey}+'&theloai='+${idtheloai}+'&sort='+${sort}+'&thutu='+${thutu}}" th:utext="${page}"></a></li>
+
+							<li
+								th:class="${currentPage==maxPage}?'page-item':'page-item active'"><a
+								th:class="${currentPage==maxPage-1}?'page-link disa':'page-link'"
+								th:href="@{'/mybook/book/'+${currentPage+1}+'?search='+${searchkey}+'&theloai='+${idtheloai}+'&sort='+${sort}+'&thutu='+${thutu}}" aria-label="Next">
+									<span aria-hidden="true">&raquo;</span> <span class="sr-only">Next</span>
+							</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+		<!-- Shop Product End -->
+	</div>
+</div>
+<!-- Shop End -->

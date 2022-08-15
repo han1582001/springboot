@@ -1,0 +1,40 @@
+<div xmlns:th="http://www.thymeLeaf.org">
+<div 
+	class="container-fluid pt-4 px-4">
+	<div class="row g-4">
+		<div class="col-12">
+			<div class="bg-secondary rounded h-100 p-4">
+				<h6 class="mb-4" style="text-align: center">HỒ SƠ CÁ NHÂN</h6>
+				<div class="table-responsive">
+					<table  th:object="${taikhoanselected}">
+					
+					<tr>
+					<td style="width:250px;display:flex; flex-wrap: wrap; justify-content: center;"><img class="rounded-circle" style="width: 200px; height: 200px;" th:src="@{'/images/user/'+${taikhoanselected.id}+'/'+${taikhoanselected.avatar}}"/>
+					
+					<h1 class="h5" style="margin:20px;" th:utext="${taikhoanselected.hovaten}"></h1>
+					<p th:utext="${taikhoanselected.email}"></p>
+					</td>
+					<td style="vertical-align: top">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item bg-transparent" th:utext="'Tên Đăng Nhập: '+${taikhoanselected.tendangnhap}"></li>
+                                <li class="list-group-item bg-transparent" th:utext="'Số Điện Thoại: '+${taikhoanselected.sdt}"></li>
+                                <li class="list-group-item bg-transparent" th:utext="'Email: '+${taikhoanselected.email}"></li>
+                                 <li class="list-group-item bg-transparent" th:utext="'Địa Chỉ: '+${taikhoanselected.diachi}"></li>
+                                <li class="list-group-item bg-transparent" th:utext="'Loại Tài Khoản: '+${taikhoanselected.phanquyen}"></li>
+                                
+                                <li class="list-group-item bg-transparent"><a type="button" class="btn btn-outline-primary m-2">Đổi Mật Khẩu</a></li>
+                                
+                            </ul>
+                        
+                    
+					</td>
+					
+					</tr>
+						
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	</div>

@@ -1,0 +1,52 @@
+ <div xmlns:th="http://www.thymeLeaf.org" class="container-fluid pt-4 px-4">
+ <style>
+  th, td{
+text-align: center;
+justify-content: center;
+
+ }
+ </style>
+                <div class="bg-secondary text-center rounded p-4">
+                
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">Danh Sách Tác Giả</h6>
+                       <div>
+                       <a type="button" th:href="@{/admin/themtacgiamoi}" class="btn btn-outline-success m-2">Thêm Mới</a>
+                       <a type="button" class="btn btn-outline-primary m-2">Xóa</a>
+                       </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                            <thead>
+                                <tr class="text-white">
+                                    
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Ảnh</th>
+                                    <th style="width:200px" scope="col">Tên Tác Giả</th>
+                                    <th scope="col">Tiểu Sử</th>
+                                  
+                                    <th style="width:200px" scope="col">Cập Nhật,Xóa</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="tacgia:${listtacgia}">
+                                   
+                                    <td th:utext="${tacgia.id}"></td>
+                                    <td ><img class="rounded-circle" style="width: 60px; height: 90px;" th:src="@{'/images/tacgia/'+${tacgia.id}+'/'+${tacgia.anh}}"/></td>
+                                    <td th:utext="${tacgia.tentacgia}"></td>
+                                    <td style="text-align: left;"><p th:utext="${tacgia.mota}"></p></td>
+                               
+                                   <td><a th:href="@{'/admin/capnhattacgia/'+${tacgia.id}}" class="btn btn-outline-info m-2" href="">Cập Nhật</a>
+                                   
+                                   <a
+							type="button" th:href="@{'/admin/xoatacgia/'+${tacgia.id}}"
+							onclick="return confirm('Bạn có chắc chắn muốn xóa')"
+							class="btn btn-outline-primary m-2">Xóa</a>
+                                   </td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                </div>

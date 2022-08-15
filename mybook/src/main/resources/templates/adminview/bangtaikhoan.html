@@ -1,0 +1,36 @@
+<div xmlns:th="http://www.thymeLeaf.org" class="container-fluid pt-4 px-4">
+  <div class="row g-4">
+ <div  class="col-12">
+                        <div class="bg-secondary rounded h-100 p-4">
+                            <h6 class="mb-4">Danh Sách Người Dùng</h6>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">Avatar</th>
+                                            <th scope="col">Họ Và Tên</th>
+                                            <th scope="col">Email</th>
+                                            <th scope="col">Số Điện Thoại</th>
+                                            <th scope="col">Loại Tài Khoản</th>
+                                          <th scope="col">Xem Chi Tiết</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="taikhoan:${listacc}">
+                                            <th scope="row" th:utext="${taikhoan.id}"></th>
+                                            <td><img class="rounded-circle"  th:src="@{'/images/user/'+${taikhoan.id}+'/'+${taikhoan.avatar}}" style="width: 40px; height: 40px;"/></td>
+                                            <td th:utext="${taikhoan.hovaten}"></td>
+                                            <td th:utext="${taikhoan.email}"></td>
+                                            <td th:utext="${taikhoan.sdt}"></td>
+                                            <td th:utext="${taikhoan.phanquyen}"></td>
+                                       <td><a th:href="@{'/admin/profile/'+${taikhoan.id}}" class="btn btn-outline-info m-2" >Chi Tiết</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                

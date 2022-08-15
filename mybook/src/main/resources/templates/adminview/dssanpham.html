@@ -1,0 +1,82 @@
+
+<div xmlns:th="http://www.thymeLeaf.org"
+	class="container-fluid pt-4 px-4">
+	<style>
+th, td {
+	text-align: center;
+}
+
+a.disa {
+	pointer-events: none;
+	cursor: default;
+}
+</style>
+	<div class="bg-secondary text-center rounded p-4">
+		<div th:switch="${ano}" class="d-flex align-items-center justify-content-between mb-4">
+			<h6 class="mb-0">Quản Lý Sách</h6>
+			<h6 th:case="'search'" class="mb-0"  th:utext="'Kết Quả Tìm Kiếm Cho :'+${searchkey}"></h6>
+			<br>
+
+			<div>
+				<a type="button" th:href="@{/admin/themsachmoi}"
+					class="btn btn-outline-success m-2">Thêm Mới</a>
+
+			</div>
+
+		</div>
+		<div class="d-flex align-items-center justify-content-between mb-4">
+			<h6 class="mb-0" th:utext="'Tổng mặt sách: '+${countSach}"></h6>
+		</div>
+		<div class="table-responsive">
+			<table
+				class="table text-start align-middle table-bordered table-hover mb-0">
+				<thead>
+					<tr class="text-white">
+						
+						<th scope="col">ID</th>
+						<th scope="col">Hình Ảnh</th>
+						<th scope="col">Tên Sách</th>
+
+						<th scope="col">Số Lượng</th>
+						<th scope="col">Giá</th>
+						<th scope="col">#</th>
+
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="sach:${listsach}">
+						
+						<td th:utext="${sach.id}"></td>
+						<td><img style="width: 50px; height: 80px;"
+							th:src="@{'/images/sach/'+${sach.id}+'/'+${sach.anh}}" /></td>
+						<td th:utext="${sach.tensach}"></td>
+
+						<td th:utext="${sach.soluong}"></td>
+						<td th:utext="${sach.gia}+' VND'"></td>
+
+						<td style="padding: 5px"><a class="btn btn-outline-info m-2"
+							th:href="@{'/admin/chitietsach/'+${sach.id}}">Chi tiết</a> <a
+							type="button" th:href="@{'/admin/xoasach/'+${sach.id}}"
+							onclick="return confirm('Bạn có chắc chắn muốn xóa')"
+							class="btn btn-outline-primary m-2">Xóa</a></td>
+
+					</tr>
+
+				</tbody>
+			</table>
+		</div>
+		<div class="bg-secondary rounded h-100 p-4">
+			<div class="btn-group me-2" th:each="page:${pageList}"
+				th:switch="${ano}" role="group" aria-label="Second group">
+				<a th:case="'search'"
+					th:href="@{'/admin/danhsachsanpham/search/'+${page-1}}+'?search='+${searchkey}"
+					type="button"
+					th:class="${CurrentPage==page-1}? 'btn btn-primary disa':'btn btn-secondary'"
+					th:utext="${page}"></a> <a th:case="'null'"
+					th:href="@{'/admin/danhsachsanpham/'+${page-1}}" type="button"
+					th:class="${CurrentPage==page-1}? 'btn btn-primary disa':'btn btn-secondary'"
+					th:utext="${page}"></a>
+			</div>
+		</div>
+	</div>
+</div>

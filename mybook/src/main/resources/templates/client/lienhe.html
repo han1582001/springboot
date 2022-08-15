@@ -1,0 +1,40 @@
+<div xmlns:th="http://www.thymeLeaf.org" class="container-fluid pt-5">
+        <div class="text-center mb-4">
+            <h2 class="section-title px-5"><span class="px-2">Phản Hồi</span></h2>
+        </div>
+        <div class="row px-xl-5">
+            <div class="col-lg-7 mb-5">
+                <div class="contact-form">
+                    <div id="success"></div>
+                    <form  th:action="@{/phanhoi/send}" method="post" th:object="${mess}" >
+                      
+                        <div class="control-group">
+                            <textarea class="form-control" th:field="*{noidung}" rows="6" id="message" placeholder="Message"
+                                required="required"
+                                ></textarea>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div>
+                            <input type="submit" value="Gửi" class="btn btn-primary py-2 px-4" id="sendMessageButton">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-5 mb-5">
+                <h5 class="font-weight-semi-bold mb-3">Cách khác</h5>
+                <p>Liên Hệ Trực Tiếp Với Quản Trị Viên</p>
+                <div class="d-flex flex-column mb-3">
+                    <h5 class="font-weight-semi-bold mb-3"></h5>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>123 Street, New York, USA</p>
+                    <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>zedlmhthan@gmail.com</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt text-primary mr-3"></i>+0962669790</p>
+                </div>
+                <div class="d-flex flex-column">
+                    <h5 class="font-weight-semi-bold mb-3">Hoặc</h5>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>123 Street, New York, USA</p>
+                    <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>nguyenvanhan@gmail.com</p>
+                    <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>+012 345 67890</p>
+                </div>
+            </div>
+        </div>
+    </div>

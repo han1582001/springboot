@@ -1,0 +1,40 @@
+
+.alertdangkythanhcong-container{
+	position: fixed;
+	left:0%;
+	top:0%;
+	right:0%;
+	bottom:0%;
+	background:transparent;
+		z-index: 2;
+	
+}
+.background{
+		position:relative;
+	left:0%;
+	top:0%;
+	right:0%;
+	bottom:0%;
+	background:black;
+	opacity: 0.5;
+		z-index: 2;
+}
+.alertdangkythanhcong{
+	padding:20px;
+	position:relative;
+	width:30%;
+	height:30%;
+	left:35%;
+	top:35%;
+border-radius:10dp;
+	z-index: 3;
+	background:#808080;	
+	justify-content: center;
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+}
+.alertdangkythanhcong.h3{
+	color:#00ff00;
+	margin-bottom: 20px;
+}

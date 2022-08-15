@@ -1,0 +1,49 @@
+ <div xmlns:th="http://www.thymeLeaf.org" class="container-fluid pt-4 px-4">
+                <div style="padding:50px" class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">
+                        <script type="text/javascript">
+function confirmSubmit(){
+	var result= confirm("Bạn Chắc Chắn Muốn Thêm Thêm Tác Giả");
+	if(result){
+		return true;
+	}else{
+		return false;
+	}
+	
+}
+</script>
+                        <div class="bg-secondary rounded h-100 p-4">
+                            <h6 class="mb-4">Thêm Tác Giả Mới</h6>
+                               <form th:action="@{'/admin/themtacgiamoi/'+${ano}}" onsubmit="confirmSubmit()" th:switch="${ano}" th:object="${newtacgia}" method="post" enctype="multipart/form-data">
+                            <div th:case="'update'" class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput"
+                                    placeholder="" th:field="*{id}" required="required">
+                                <label for="floatingInput">ID</label>
+                            </div>
+                            
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput"
+                                    placeholder="Nhập Tên Tác Giả" th:field="*{tentacgia}" required="required">
+                                <label for="floatingInput">Tên Tác Giả</label>
+                            </div>
+                          
+                            <div class="form-floating">
+                                <textarea class="form-control" placeholder="Leave a comment here"
+                                    id="floatingTextarea" style="height: 150px;" required="required" th:field="*{mota}"></textarea>
+                                <label for="floatingTextarea">Mô Tả</label>
+                            </div>
+                            <div class="mb-3">
+                                <label for="formFile" class="form-label">Thêm Ảnh Mô tả</label>
+                                <input class="form-control bg-dark"  name="image" id="image" required="required" type="file">
+                            </div>
+                             <div class="mb-3">
+                             <input class="btn btn-primary w-100" type="submit" value="Hoàn tất" id="formFile">
+                         </div>
+                         <div class="mb-3">
+                              <a th:href="@{/admin/tacgia}" class="btn btn-outline-primary w-100" type="button">Hủy</a>
+                            </div>
+                           
+                             </form>
+                        </div>
+                  
+                </div>
+            </div>

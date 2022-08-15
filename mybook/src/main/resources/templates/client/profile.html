@@ -1,0 +1,165 @@
+
+    <div class="container-fluid py-5" xmlns:th="http://www.thymeLeaf.org" th:object="${taikhoan}">
+        <div class="row px-xl-5">
+            <div class="col-lg-5 pb-5">
+                <div id="product-carousel" style="text-align: center" class="carousel" data-ride="carousel slide">
+                    <div class="carousel-inner border" >
+                        <div class="carousel-item active" style="justify-content: center;">
+                            <img style="width:300px; margin-top: 20px; margin-bottom: 20px " class=" h-100" th:src="@{'/images/user/'+${taikhoan.id}+'/'+${taikhoan.avatar}}" alt="Image">
+                        </div>
+                     
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-7 pb-5">
+                <h3 class="font-weight-semi-bold" th:utext="${taikhoan.hovaten}"></h3>
+                <div class="d-flex mb-3">
+                    <div class="text-primary mr-2">
+                        <small class="fas fa-star"></small>
+                        <small class="fas fa-star"></small>
+                        <small class="fas fa-star"></small>
+                        <small class="fas fa-star-half-alt"></small>
+                        <small class="far fa-star"></small>
+                    </div>
+                    <small class="pt-1">(50 Reviews)</small>
+                </div>
+         
+                <div class="d-flex mb-3">
+                <table>
+                <tr>
+                   <td> <p class="text-dark font-weight-medium mb-4 mr-3">Họ Và Tên:</p></td>
+                    <td> <p class="text-dark mb-4"><a href="#" class="mb-4"th:utext="${taikhoan.hovaten}"></a></p></td>
+                    </tr>
+                    <tr>
+                   <td> <p class="text-dark font-weight-medium mb-4 mr-3">Email</p></td>
+                    <td> <p class="text-dark mb-4"><a href="#" class="mb-4" th:utext="${taikhoan.email}"></a></p></td>
+                    </tr>
+                    <tr>
+                   <td> <p class="text-dark font-weight-medium mb-4 mr-3">Số Điện Thoại:</p></td>
+                    <td> <p class="text-dark mb-4"><a href="#" class="mb-4" th:utext="${taikhoan.sdt}"></a></p></td>
+                    </tr>
+                    <td> <p class="text-dark font-weight-medium mb-4 mr-3">Địa Chỉ:</p></td>
+                    <td> <p class="text-dark mb-4"><a href="#" class="mb-4" th:utext="${taikhoan.diachi}"></a></p></td>
+                    </tr>
+                    </table>
+                </div>
+                
+                <div class="d-flex align-items-center mb-4 pt-2">
+                    
+                    <a th:href="@{/dangxuat}" class="btn btn-primary px-3"> Đăng Xuất</a>
+                </div>
+               
+            </div>
+        </div>
+        <div class="row px-xl-5">
+	            <div class="col">
+                <div class="nav nav-tabs justify-content-center border-secondary mb-4">
+                    <a class="nav-item nav-link active" data-toggle="tab" href="#tab-pane-1">Lịch Sử Mua Hàng</a>
+                    <a class="nav-item nav-link" data-toggle="tab" href="#tab-pane-2">Đơn Hàng Đang Đợi</a>
+                    <a class="nav-item nav-link" data-toggle="tab" href="#tab-pane-3">Đổi Mật Khẩu</a>
+                </div>
+                <div class="tab-content" style=" display: flex;
+  align-items: center;
+  justify-content: center;">
+                    <div  class="tab-pane fade show active" style=" justify-content: center;" id="tab-pane-1">
+                        <div style=" color: black;width:700px; justify-content: center;" class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                            <thead>
+                                <tr class="text-white">
+                             
+                                    <th scope="col"  style=" text-align:center; color: black;width:400px;">Ngày Đặt Hàng</th>
+                                    
+                                    <th scope="col" style="width:400px;"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="donhang:${listdamua}">
+                                   
+                                   
+                                   
+                               
+                                    <td style="text-align:center;" th:utext="${donhang.timedathang}"></td>
+                                    
+                                    
+                                    <td style="text-align:center; display: flex; flex-wrap: wrap; justify-content:center;" th:switch="${donhang.trangthai}">
+                                    
+                                    
+                                    <a th:href="@{'/mybook/profile/chitietdonhang/'+${donhang.id}	}" type="button" class="btn btn-success rounded-pill m-2">Chi Tiết</a>
+                                  
+                                   
+                                </tr>
+                                
+                               
+                               
+                            </tbody>
+                        </table>
+                    </div>
+                     </div>
+                    <div class="tab-pane fade" style="justify-content: center;" id="tab-pane-2">
+                        <div style=" color: black;width:700px; justify-content: center;" class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                            <thead>
+                                <tr class="text-white">
+                             
+                                    <th scope="col"  style=" text-align:center; color: black;width:400px;">Ngày Đặt Hàng</th>
+                                    
+                                    <th scope="col" style="width:400px;"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="donhang:${listcho}">
+                                   
+                                   
+                                   
+                               
+                                    <td style="text-align:center;" th:utext="${donhang.timedathang}"></td>
+                                    
+                                    
+                                    <td style="text-align:center; display: flex; flex-wrap: wrap; justify-content: center;"th:switch="${donhang.trangthai}">
+                                    
+                                    
+                                    <a th:href="@{'/mybook/profile/chitietdonhang/'+${donhang.id}	}" type="button" class="btn btn-success rounded-pill m-2">Chi Tiết</a>
+                                  
+                                   
+                                </tr>
+                                
+                               
+                               
+                            </tbody>
+                        </table>
+                    </div>
+                    </div>
+                    <div class="tab-pane fade" id="tab-pane-3">
+                        <div style=" color: black;width:400px; justify-content: center;" class="table-responsive">
+						<h5 class="font-weight-bold text-dark mb-4">Đổi Mật Khẩu</h5>
+						<form th:action="@{/doimatkhau}" method="get">
+							<div class="form-group">
+								<input type="password" class="form-control border-0 py-4"
+									placeholder="Nhập Mật Khẩu Cũ" name="old" id="old" required="required" />
+							</div>
+							<div class="form-group">
+								<input type="password" class="form-control border-0 py-4"
+									placeholder="Nhập Mật Khẩu Mới" name="new" id="new" required="required" />
+							</div>
+							<div>
+								<button class="btn btn-primary btn-block border-0 py-3"
+									type="submit">Hoàn Tất</button>
+							</div>
+						</form>
+					</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Shop Detail End -->
+
+
+    <!-- Products Start -->
+    
+    <!-- Products End -->
+
+
+   
+   

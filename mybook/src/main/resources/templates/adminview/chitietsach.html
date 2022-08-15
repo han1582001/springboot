@@ -1,0 +1,66 @@
+
+<div xmlns:th="http://www.thymeLeaf.org"
+	class="container-fluid pt-4 px-4">
+	<div class="row g-4">
+		<div class="col-12">
+			<div class="bg-secondary rounded h-100 p-4">
+				<h6 class="mb-4" style="text-align: center">Thông Tin Sách</h6>
+				<div class="table-responsive">
+					<table th:object="${sachinfo}">
+
+						<tr>
+							<td
+								style="width: 160px; display: flex; padding:20px; flex-wrap: wrap; justify-content: center;"><img
+								style="width: 150px; height: 225px;"
+								th:src="@{'/images/sach/'+${sachinfo.id}+'/'+${sachinfo.anh}}" />
+								<h6 style="margin:20px" th:utext="${sachinfo.tensach}" class="mb-4"></h6></td>
+							<td style="vertical-align: top; padding-left:20px">
+								<table>
+								<tr>
+										<td style="width:150px"><p>Tên Sách:</p></td>
+										<td><p  class="text-success">  <h6 class="mb-4" th:utext="${sachinfo.tensach}"></h6></p></td>
+									</tr>
+									<tr>
+										<td><p>Tác Giả:</p></td>
+										<td><p th:utext="${sachinfo.tacgia}" class="text-success"></p></td>
+									</tr>
+									<tr>
+										<td><p>Thể Loại:</p></td>
+										<td><p th:utext="${sachinfo.theloai}" class="text-success"></p></td>
+									</tr>
+									<tr>
+										<td><p>Nhà Xuất Bản:</p></td>
+										<td><p th:utext="${sachinfo.nxb}" class="text-success"></p></td>
+									</tr>
+									<tr>
+										<td><p>Giá:</p></td>
+										<td><p th:utext="${sachinfo.gia}+' VND'" class="text-success"></p></td>
+									</tr>
+									<tr>
+										<td><p>Số Lượng:</p></td>
+										<td><p th:utext="${sachinfo.soluong}+' quyển'" class="text-success"></p></td>
+									</tr>
+									<tr>
+										<td style="vertical-align: top;"><p>Giới Thiệu:</p></td>
+										<td><p th:utext="${sachinfo.noidung}" class="text-success"></p></td>
+									</tr>
+									<tr>
+										<td colspan="2"><p th:utext="'Đăng bởi '+${sachinfo.nguoidang}+' lúc '+${sachinfo.thoigiandang}" class="text-success"></p></td>
+									</tr>
+									<tr>
+									<td><a th:href="@{'/admin/capnhatsach/'+${sachinfo.id}}" class="btn btn-outline-info m-2">Cập Nhật</a></td>
+									<td><a type="button" th:href="@{'/admin/xoasach/'+${sachinfo.id}}" onclick="return confirm('Bạn có chắc chắn muốn xóa')" class="btn btn-outline-primary m-2">Xóa</a></td>
+								</tr>
+								</table>
+
+
+							</td>
+
+						</tr>
+
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

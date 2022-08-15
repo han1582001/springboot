@@ -1,0 +1,67 @@
+
+    <div class="container-fluid py-5" xmlns:th="http://www.thymeLeaf.org" th:object="${tacgia}">
+        <div class="row px-xl-5">
+            <div class="col-lg-5 pb-5">
+                <div id="product-carousel" style="text-align: center" class="carousel" data-ride="carousel slide">
+                    <div class="carousel-inner border" >
+                        <div class="carousel-item active" style="justify-content: center;">
+                            <img style="width:300px; margin-top: 20px; margin-bottom: 20px " class=" h-100" th:src="@{'/images/tacgia/'+${tacgia.id}+'/'+${tacgia.anh}}" alt="Image">
+                        </div>
+                     
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-7 pb-5">
+                <h3 class="font-weight-semi-bold" th:utext="${tacgia.tentacgia}"></h3>
+               
+               
+                <p class="text-dark font-weight-medium mb-4 mr-3">Tiểu Sử, Giới Thiệu:</p>
+                <p class="mb-4" th:utext="${tacgia.mota}"></p>
+               
+                
+               
+               
+            </div>
+        </div>
+        
+    </div>
+    <!-- Shop Detail End -->
+
+
+    <!-- Products Start -->
+    <div class="container-fluid py-5 " xmlns:th="http://www.thymeLeaf.org" th:object="${tacgia}">
+        <div class="text-center mb-4">
+            <h2 class="section-title px-5"><span class="px-2" th:utext="'Các Tác Phẩm Của '+${tacgia.tentacgia}"> </span></h2>
+        </div>
+        <div class="row px-xl-5">
+            <div class="col">
+                <div  class="owl-carousel related-carousel">
+                    <div  th:each="sachx:${listsachtacgia}"  class="card product-item border-0">
+                        <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0" style="text-align: center">
+                            <img class="img-fluid w-100" style="width:200px; height:370px" th:src="@{'/images/sach/'+${sachx.id}+'/'+${sachx.anh}}" alt="">
+                        </div>
+                        <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                            <h6 class="text-truncate mb-3" th:utext="${sachx.tensach}"></h6>
+                            <div class="d-flex justify-content-center">
+                                <h6 class="text-muted ml-2" th:utext="${sachx.gia}"></h6>
+                            </div>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between bg-light border">
+                            <a th:href="@{'/mybook/chitietsach?id='+${sachx.id}}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Xem Chi Tiết</a>
+                            <a th:href="@{'/mybook/giohang/'+${sachx.id}}" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Thêm Vào Giỏ Hàng</a>
+                        </div>
+                    </div>
+                     
+                    
+                    
+               
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Products End -->
+
+
+   
+   

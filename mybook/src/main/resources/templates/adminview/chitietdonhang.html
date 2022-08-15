@@ -1,0 +1,71 @@
+ <!-- Recent Sales Start -->
+            <div xmlns:th="http://www.thymeLeaf.org" class="container-fluid pt-4 px-4">
+                <div class="bg-secondary text-center rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">Chi Tiết Đơn Hàng</h6>
+                        
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                            <thead>
+                                <tr class="text-white">
+                                   
+                                    <th scope="col" style="width:200px; text-align: center;"  colspan="2">Sách</th>
+                                    <th scope="col" style="width:150px; text-align: center; ">Giá</th>
+                                    <th scope="col" style="width:100px; text-align: center;">Số lượng</th>
+                                    <th scope="col" style="width:200px; text-align: center; ">Thành Tiền</th>
+                            
+               
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="hang:${chitiendonhanginfo}">
+                                   <td style="width:100px; text-align: center"><img style="width: 50px; height: 80px;"
+							th:src="@{'/images/sach/'+${hang.id}+'/'+${hang.anh}}" /></td>
+                                    
+                                    <td th:utext="${hang.sanpham}"></td>
+                                    <td th:utext="${hang.gia}+' vnd'" style="text-align: center;"></td>
+                                    <td th:utext="${hang.soluong}" style="text-align: center;"></td>
+                                    <td th:utext="${hang.soluong*hang.gia}" style="text-align: center;">
+                                                       
+                                    </td>
+                                    
+                                    
+                                </tr>
+                                
+                               
+                               
+                            </tbody>
+                        </table>
+                    </div>
+              <br/>
+                <div class="d-flex align-items-center justify-content-between mb-4" th:object="${donhanginfo}">
+                        <table>
+								<tr>
+										<td style="width:300px"><p>Tổng Giá Trị Đơn Hàng:</p></td>
+										<td><p  class="text-success">  <h6 class="mb-4" th:utext="${donhanginfo.thanhtien}"></h6></p></td>
+									</tr>
+					<tr>
+										<td style="width:150px"><p>Người Mua:</p></td>
+										<td><p  class="text-success">  <h6 class="mb-4" th:utext="${donhanginfo.tenkhachhang}"></h6></p></td>
+									</tr>
+									<tr>
+										<td colspan="2"><p th:utext="'Đặt Hàng Lúc '+${donhanginfo.timedathang}" class="text-success"></p></td>
+									</tr>
+									<tr>
+										<td colspan="2" th:switch="${donhanginfo.trangthai}"><p th:case="0" th:utext="'Chưa Nhận Hàng'" class="text-success"></p>
+										<p th:case="1" th:utext="'Đã Nhận Hàng Vào Lúc: '+${donhanginfo.timenhanhang}" class="text-success"></p>
+										</td>
+									</tr>
+									<tr>
+									<td th:switch="${donhanginfo.trangthai}"><a th:href="@{'/admin/danhsachdonhang/giaohang?id='+${donhanginfo.id}+'&trangthai=1'}" th:case="0"  class="btn btn-outline-info m-2" >Giao Hàng</a>
+                                    <a th:href="@{'/admin/danhsachdonhang/giaohang?id='+${donhanginfo.id}+'&trangthai=0'}" th:case="1" type="button" class="btn btn-warning rounded-pill m-2">Hoàn Tác</a></td>
+									<td th:switch="${donhanginfo.trangthai}"><a th:case="1" type="button"href="#" onclick="return confirm('Bạn có chắc chắn muốn xóa')" class="btn btn-outline-primary m-2">Xóa</a></td>
+								</tr>
+								</table>
+                        
+                    </div>
+                
+                </div>
+            </div>
+            <!-- Recent Sales End -->
